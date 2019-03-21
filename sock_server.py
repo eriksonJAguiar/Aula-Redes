@@ -1,7 +1,7 @@
 import socket
 import sys
 
-args = sys.agrv[1:]
+args = sys.argv[1:]
 
 HOST = '10.62.9.23'              
 PORT = 5000         
@@ -13,11 +13,11 @@ print('sevidor iniciado ...')
 while True:
     con, cliente = tcp.accept()
     print 'Concetado por', cliente
-    filename = agrs[1]
+    filename = args[0]
     fd = open(filename,'rb')
     f = fd.read(1024)
     while(f):
-        tcp.send(f)
+        con.send(f)
         f = fd.read(1024)
 
     fd.close()
@@ -25,4 +25,5 @@ while True:
 
     print('Arquivo enviado!')
     con.close()
+    break
 
